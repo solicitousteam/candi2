@@ -1,0 +1,46 @@
+<head>
+
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="css/jquery.countdown.css"> 
+<script type="text/javascript" src="js/jquery.plugin.js"></script> 
+<script type="text/javascript" src="js/jquery.countdown.js"></script>
+<script>
+$(function () {
+	var austDay = new Date();
+	austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
+	$('#demo').countdown({until: austDay});
+	$('#year').text(austDay.getFullYear());
+});
+
+function startTimer(duration, display) {
+    var timer = duration, hours, minutes, seconds;
+    setInterval(function () {
+        hours = parseInt(60);
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var fiveMinutes = 60 * 5,
+        display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+};
+</script>
+</head>
+
+
+<body>
+    <script>
+        $("#demo").countdown({until: liftoffTime});
+        </script> 
+</body>
